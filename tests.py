@@ -32,7 +32,7 @@ class UnitTests(unittest.TestCase):
         expected = True
         self.assertEqual(actual, expected, "Expected 'https://testsite.com/new_book' to return True.")
 
-    def createTopicTextFileName(self):
+    def testCreateTopicTextFileName(self):
         researchTool = researchtool.ResearchTool('looking after flowers')
         actual = researchTool.createTopicTextFileName()
         expected = "looking_after_flowers.txt"
