@@ -37,6 +37,12 @@ class UnitTests(unittest.TestCase):
         actual = researchTool.createTopicTextFileName()
         expected = "looking_after_flowers.txt"
         self.assertEqual(actual, expected, "Expected 'looking_after_flowers.txt' from topic name.")
+    
+    def testCreateFile(self):
+        researchTool = researchtool.ResearchTool('testing')
+        actual = researchTool.createFile()
+        expected = "We have created a file called 'testing.txt' to store your paragraphs in."
+        self.assertEqual(actual, expected, "Expected message - we have created a file.....'testing.txt'")
 
 
 if __name__ == "__main__":

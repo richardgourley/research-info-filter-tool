@@ -28,6 +28,5 @@ class ResearchTool():
             return "Sorry there was a problem."
 
     def openFile(self):
-        return open(self.createTopicTextFileName(), "wb")
+        return open(self.createTopicTextFileName(), "a")
             
-
