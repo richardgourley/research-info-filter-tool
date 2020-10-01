@@ -6,15 +6,15 @@ import bs4
 topic = input("Hello. What is the name of the topic you would like to research?\n")
 
 # create instance of ResearchTool
-rt = researchtool.ResearchTool(topic)
+researchTool = researchtool.ResearchTool(topic)
 
 # get file name, create file and then tell user where they can find results.
-topicFileName = rt.createTopicTextFileName()
-rt.createFile()
+topicFileName = researchTool.createTopicTextFileName()
+researchTool.createFile()
 print("\nGreat! You can see your saved paragraphs in this file in the current folder when you have finished:\n", topicFileName, "\n")
 
 # Open the topicFile where the user can save useful paragraphs.
-topicFile = rt.openFile()
+topicFile = researchTool.openFile()
 
 # Temp File that stores page content after each URL is entered, the user will save useful
 # ...paragraphs to the topicFile above
@@ -26,7 +26,7 @@ while enterUrls is True:
     print("===========================")
     url = input("\nEnter a valid url to search\n")
 
-    if rt.checkUrl(url):        
+    if researchTool.checkUrl(url):        
         # If url is valid, save content to tempfile.txt
         try:
             res = requests.get(url)
