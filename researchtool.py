@@ -1,4 +1,5 @@
 import re
+import os
 
 class ResearchTool():
     def __init__(self, topicName):
@@ -29,4 +30,11 @@ class ResearchTool():
 
     def openFile(self):
         return open(self.createTopicTextFileName(), "a")
+
+    # Clear the screen for the user before the next quesiton
+    def screen_clear(self):
+        if os.name == "posix":
+            _ = os.system('clear')
+        else:
+            _ = os.system('cls')
             
