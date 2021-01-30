@@ -6,7 +6,8 @@ class UrlRequester():
         pass
 
     '''
-    
+    Tries to open given url
+    Retrieves content and saves to file given (append binary file)
     '''
     def get_store_url_content(self, url, file):
         try:
@@ -14,7 +15,6 @@ class UrlRequester():
             res.raise_for_status()
             for chunk in res.iter_content(100000):
                 file.write(chunk)
-            file.close()
         except:
             print("NOTE! COULD NOT OPEN URL: " + url)
 
