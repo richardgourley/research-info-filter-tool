@@ -1,8 +1,7 @@
 '''
 This class interacts with the user, providing messages
-The class takes an instance of the ResearchTool class
-The methods in the class aim to make it easier to break down at which point in the process ...
-..the user is at
+The class takes an instance of FileHandler and UrlRequester classes
+The class methods either a) interract with user, or b) open urls, retrieve info and add to files
 '''
 class UserInteraction:
     def __init__(self, file_handler, url_requester):
@@ -86,18 +85,21 @@ class UserInteraction:
                 still_entering_urls = False
 
     '''
-    FileHandler creates a temporary file and opens topic file
-    UrlRequester is handed each url and saves text to temp file
+    FileHandler creates a temporary (append binary) file and opens topic file
+    FOR each URl, UrlRequester opens and saves text to temp file
     UrlRequester uses Beautiful Soup to retrieve paragraphs from temp file ....
-    .... saves to topic_file
+    .... and appends paragraphs to topic_file
+    Finally, open up temp file in write mode to leave 'textfile.txt' blank for the next time program runs
     '''
     def visit_urls_save_paragraphs(self):
-        temp_file = self.file_handler.create_temporary_file_append_binary()
+        temp_file = self.file_handler.create_temporary_file_append_binary() # 'textfile.txt' created
         topic_file = self.file_handler.open_file_append(self.topic_file_name)
         for url in self.urls:
             self.url_requester.get_store_url_content(url, temp_file)
         temp_file = self.file_handler.open_file_read("tempfile.txt")
         self.url_requester.append_paragraphs(temp_file, topic_file)
+        temp_file = self.file_handler.open_file_write("tempfile.txt") # re-open 'textfile.txt' in 'w' mode - leaves blank file
+        
 
 
 
