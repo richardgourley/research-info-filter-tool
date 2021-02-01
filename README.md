@@ -1,13 +1,14 @@
 # RESEARCH INFO FILTER TOOL
-This is a command line python script that prompts researchers to enter urls and then decide whether to save each paragraph to a file for later.
+This is a command line python script that prompts researchers to enter a topic name, a folder to save the results to and multiple urls for research. 
+The code then creates a file with the topic name in the entered directory.
+Python code then saves the html from the url in a temp file, then finds each paragraph in the text and saves the paragraph to the topic file.
+
 The process runs as follows.
 
-1. User enters a topic name.
-2. A file is created with the topic name, replacing spaces with underscores eg. my_topic.txt
-3. The user is then prompted to enter a blog post url.
-4. The user is then presented with each paragraph from the blog post, one by one, and is asked if this paragraph is useful to them.
-5. If the user opts to save the paragraph, it is saved in the topic file.
-6. When all paragraphs from that blog post have been filtered, the user can either end the program or enter another url and repeat the process.
+1. User enters a topic name and a directory.
+2. A file is created with the topic name in the chosen directory, replacing spaces with underscores eg. my_topic.txt
+3. The user is then prompted to enter as many blog post urls as they like.
+4. All paragraphs from the urls are saved to the topic file.
 
 ## SKILLS COVERED:
 For python students, here are some of the skills covered in this simple program:
