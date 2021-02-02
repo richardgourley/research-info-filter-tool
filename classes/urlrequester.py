@@ -24,6 +24,8 @@ class UrlRequester():
         for para in paragraphs:
             para_text = para.getText()
             topic_file.write(para_text + "\n\n")
+        topic_file.write("=======END OF URL========\n")
+
 
 
    
