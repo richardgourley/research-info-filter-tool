@@ -85,21 +85,25 @@ class UserInteraction:
                 still_entering_urls = False
 
     '''
-    FileHandler creates a temporary (append binary) file and opens topic file
-    FOR each URl, UrlRequester opens and saves text to temp file
-    UrlRequester uses Beautiful Soup to retrieve paragraphs from temp file ....
-    .... and appends paragraphs to topic_file
-    Finally, open up temp file in write mode to leave 'textfile.txt' blank for the next time program runs
+    FOR each URl, UrlRequester opens the topic file in append mode
+    It creates a temp file in append binary (necessary to append url content)
+    Url Requester stores the url content in the temp file
+    Temp file is then opened in read mode
+    UrlRequester then searches for paragraphs and appends to the topic file
+    The temp file is opened in write mode to clear it of text for the next iteration
+    AFTER FOR LOOP:
+    Finally, open up temp file in write mode again to leave 'textfile.txt' blank for the next time program runs
     '''
     def visit_urls_save_paragraphs(self):
-        temp_file = self.file_handler.create_temporary_file_append_binary() # 'textfile.txt' created
-        topic_file = self.file_handler.open_file_append(self.topic_file_name)
         for url in self.urls:
+            topic_file = self.file_handler.open_file_append(self.topic_file_name)
+            temp_file = self.file_handler.create_temporary_file_append_binary() # 'textfile.txt' created
             self.url_requester.get_store_url_content(url, temp_file)
-        temp_file = self.file_handler.open_file_read("tempfile.txt")
-        self.url_requester.append_paragraphs(temp_file, topic_file)
-        temp_file = self.file_handler.open_file_write("tempfile.txt") # re-open 'textfile.txt' in 'w' mode - leaves blank file
-        
+            temp_file = self.file_handler.open_file_read("tempfile.txt")
+            self.url_requester.append_paragraphs(temp_file, topic_file)
+            temp_file = self.file_handler.open_file_write("tempfile.txt")
+        # re-open 'textfile.txt' in 'w' mode - leaves blank file
+        temp_file = self.file_handler.open_file_write("tempfile.txt")
 
 
 
