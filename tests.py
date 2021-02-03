@@ -2,6 +2,9 @@ import unittest
 import researchtool
 
 class UnitTests(unittest.TestCase):
+    @classmethod
+    def setUp(self):
+        self.directory_name = 'test'
     '''
     File handler tests
     '''
@@ -10,7 +13,6 @@ class UnitTests(unittest.TestCase):
         can_open_file = file_handler.make_directory('test')
         expected = True
         self.assertEqual(can_open_file, expected, "Expected a successful opening of a file to return true.")
-
 
 if __name__ == "__main__":
     unittest.main()
