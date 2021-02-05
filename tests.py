@@ -5,6 +5,7 @@ class UnitTests(unittest.TestCase):
     @classmethod
     def setUp(self):
         self.directory_name = 'test'
+    
     '''
     File handler tests
     '''
@@ -13,6 +14,13 @@ class UnitTests(unittest.TestCase):
         can_open_file = file_handler.make_directory('test')
         expected = True
         self.assertEqual(can_open_file, expected, "Expected a successful opening of a file to return true.")
+
+    def test_create_file_returns_true(self):
+        file_handler = filehandler.FileHandler()
+        # Expecting 'test' dir to exist
+        can_create_file = file_handler.create_file('linux', self.directory_name)
+        expected = True
+        self.assertEqual(can_create_file, expected, "Expected a successful creation of a file.")
 
 if __name__ == "__main__":
     unittest.main()
