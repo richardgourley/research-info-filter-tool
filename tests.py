@@ -22,5 +22,13 @@ class UnitTests(unittest.TestCase):
         expected = True
         self.assertEqual(can_create_file, expected, "Expected a successful creation of a file.")
 
+    def test_open_file_append_returns_file_mode_a(self):
+        file_handler = filehandler.FileHandler()
+        file = file_handler.open_file_append('test/linux')
+        mode = file.mode
+        expected = "a"
+        file.close()
+        self.assertEqual(mode, expected, "Expected file to open successfully with mode 'a'.")
+
 if __name__ == "__main__":
     unittest.main()
