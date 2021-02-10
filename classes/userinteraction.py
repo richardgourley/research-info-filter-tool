@@ -42,7 +42,7 @@ class UserInteraction:
     def ask_user_for_directory(self):
         no_results_directory = True
         while no_results_directory:
-            print("What is the name of the directory you would like to save your results?")
+            print("What is the name of the directory you would like to save your results to?")
             directory_name = input()
             if directory_name == "":
                 print("Directory name must not be blank")
@@ -52,7 +52,7 @@ class UserInteraction:
 
     def create_directory_and_file(self):
         directory = self.file_handler.make_directory(self.directory_name)
-        file = self.file_handler.create_file(self.topic_file_name, self.directory_name)
+        file = self.file_handler.create_file_in_directory(self.topic_file_name, self.directory_name)
         if directory and file:
             pass
         else:
