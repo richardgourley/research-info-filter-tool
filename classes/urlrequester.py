@@ -9,7 +9,7 @@ class UrlRequester():
     Tries to open given url
     Retrieves content and saves to file given (append binary file)
     '''
-    def get_store_url_content(self, url, file):
+    def retrieve_and_store_url_content(self, url, file):
         try:
             res = requests.get(url)
             res.raise_for_status()
