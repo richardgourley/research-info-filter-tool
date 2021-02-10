@@ -5,59 +5,25 @@ import os
 class UnitTests(unittest.TestCase):
     @classmethod
     def setUp(self):
+        self.start_directory = os.getcwd()
         self.directory_name = 'test'
         self.file_handler = filehandler.FileHandler()
+
     '''
     File handler tests
     '''
     def test_make_directory_returns_true(self):
         can_open_file = self.file_handler.make_directory(self.directory_name)
         expected = True
+        os.chdir(self.start_directory)
         self.assertEqual(can_open_file, expected, "Expected a successful opening of a file to return true.")
 
     def test_create_file_returns_true(self):
-        # Expecting 'test' dir to exist
-        can_create_file = self.file_handler.create_file('linux', self.directory_name)
+        self.file_handler.make_directory('test2')
+        can_create_file = self.file_handler.create_file_in_directory('linux', 'test2')
         expected = True
+        os.chdir(self.start_directory)
         self.assertEqual(can_create_file, expected, "Expected a successful creation of a file.")
-
-    def test_open_file_append_returns_file_mode_a(self):
-        file = self.file_handler.open_file_append('test/linux')
-        mode = file.mode
-        expected = "a"
-        file.close()
-        self.assertEqual(mode, expected, "Expected file to open successfully with mode 'a'.")
-
-    def test_create_temporary_file_append_binary_file(self):
-        file = self.file_handler.create_temporary_file_append_binary()
-        expected = "ab"
-        self.assertEqual(file.mode, expected, "Expected file in 'ab' mode to be opened.")
 
 if __name__ == "__main__":
     unittest.main()import unittest
-from classes import filehandler
-import os
-
-class UnitTests(unittest.TestCase):
-    @classmethod
-    def setUp(self):
-        self.directory_name = 'test'
-        self.file_handler = filehandler.FileHandler()
-    '''
-    File handler tests
-    '''
-    def test_make_directory_returns_true(self):
-        can_open_file = self.file_handler.make_directory(self.directory_name)
-        expected = True
-        self.assertEqual(can_open_file, expected, "Expected a successful opening of a file to return true.")
-
-    def test_create_file_returns_true(self):
-        # Expecting 'test' dir to exist
-        can_create_file = self.file_handler.create_file('linux', self.directory_name)
-        expected = True
-        self.assertEqual(can_create_file, expected, "Expected a successful creation of a file.")
-
-
-
-if __name__ == "__main__":
-    unittest.main()
