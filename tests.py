@@ -28,5 +28,10 @@ class UnitTests(unittest.TestCase):
         file.close()
         self.assertEqual(mode, expected, "Expected file to open successfully with mode 'a'.")
 
+    def test_create_temporary_file_append_binary_file(self):
+        file = self.file_handler.create_temporary_file_append_binary()
+        expected = "ab"
+        self.assertEqual(file.mode, expected, "Expected file in 'ab' mode to be opened.")
+
 if __name__ == "__main__":
     unittest.main()
