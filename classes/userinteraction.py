@@ -33,8 +33,7 @@ class UserInteraction:
             no_topic_name = False
 
     def create_topic_file_name(self):
-        topic_file_name = str(self.topic_name.replace(" ","_")) + ".txt"
-        self.topic_file_name = topic_file_name
+        self.topic_file_name = str(self.topic_name.replace(" ","_")) + ".txt"
 
     '''
     Asks user for a directory to save results in  
