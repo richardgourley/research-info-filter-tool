@@ -1,5 +1,6 @@
 import unittest
 from classes import filehandler
+import shutil
 import os
 
 class UnitTests(unittest.TestCase):
