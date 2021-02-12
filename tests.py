@@ -33,10 +33,11 @@ class UnitTests(unittest.TestCase):
     UrlRequester Tests
     '''
     def test_retrieve_and_store_url_content(self):
-        valid_url = "linuxmint.com"
+        valid_url = "https://www.linuxmint.com/"
         temp_file = open("tempfile.txt", "wb")
         can_open_urls = self.url_requester.retrieve_and_store_url_content(valid_url, temp_file)
         expected = True
+        temp_file.close()
         os.unlink('tempfile.txt')
         self.assertEqual(can_open_urls, expected, "Expecting 'True' for opening and storing content from a url.")
     
