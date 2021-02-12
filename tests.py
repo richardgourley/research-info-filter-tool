@@ -1,5 +1,6 @@
 import unittest
 from classes import filehandler
+from classes import urlrequester
 import shutil
 import os
 
@@ -10,6 +11,7 @@ class UnitTests(unittest.TestCase):
         self.start_directory = os.getcwd()
         self.directory_name = 'test'
         self.file_handler = filehandler.FileHandler()
+        self.url_requester = urlrequester.UrlRequester()
 
     '''
     File handler tests
@@ -27,9 +29,25 @@ class UnitTests(unittest.TestCase):
         os.chdir(self.start_directory)
         self.assertEqual(can_create_file, expected, "Expected a successful creation of a file.")
 
+    '''
+    UrlRequester Tests
+    '''
+    def test_retrieve_and_store_url_content(self):
+        valid_url = "linuxmint.com"
+        temp_file = open("tempfile.txt", "wb")
+        can_open_urls = self.url_requester.retrieve_and_store_url_content(valid_url, temp_file)
+        expected = True
+        os.unlink('tempfile.txt')
+        self.assertEqual(can_open_urls, expected, "Expecting 'True' for opening and storing content from a url.")
+    
+    '''
+    Tear Down at the end of the tests
+    '''
+
     def tearDown(self):
         path = os.path.join(os.getcwd(), self.directory_name)
 
+        # remove 'self.directory_name' dir at the end of tests
         if os.path.exists(path):
             shutil.rmtree(path)
 
