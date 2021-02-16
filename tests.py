@@ -1,6 +1,7 @@
 import unittest
 from classes import filehandler
 from classes import urlrequester
+from classes import userinteraction
 import shutil
 import os
 
