@@ -49,6 +49,7 @@ class UnitTests(unittest.TestCase):
         temp_file = open("tempfile.txt", "wb")
         can_open_urls = self.url_requester.retrieve_and_store_url_content(invalid_url, temp_file)
         expected = False
+        temp_file.close()
         os.unlink("tempfile.txt")
         self.assertEqual(can_open_urls, expected, "Expecting 'False' for opening an invalid url.")
     
