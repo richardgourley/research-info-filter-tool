@@ -33,15 +33,15 @@ class UnitTests(unittest.TestCase):
     '''
     UrlRequester Tests
     '''
-    def test_retrieve_and_store_url_content_valid_url(self):
-        valid_url = "https://www.linuxmint.com/"
+    def test_retrieve_and_store_url_content_invalid_url(self):
+        invalid_url = "Hello, World!"
         # Must be 'write binary' for writing url request results
         temp_file = open("tempfile.txt", "wb")
-        can_open_urls = self.url_requester.retrieve_and_store_url_content(valid_url, temp_file)
-        expected = True
+        can_open_urls = self.url_requester.retrieve_and_store_url_content(invalid_url, temp_file)
+        expected = False
         temp_file.close()
-        os.unlink('tempfile.txt')
-        self.assertEqual(can_open_urls, expected, "Expecting 'True' for opening and storing content from a url.")
+        os.unlink("tempfile.txt")
+        self.assertEqual(can_open_urls, expected, "Expecting 'False' for opening an invalid url.")
 
     def test_retrieve_and_store_url_content_invalid_url(self):
         invalid_url = "Hello, World!"
