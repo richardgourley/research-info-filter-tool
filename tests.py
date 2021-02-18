@@ -53,6 +53,18 @@ class UnitTests(unittest.TestCase):
         os.unlink("tempfile.txt")
         self.assertEqual(can_open_urls, expected, "Expecting 'False' for opening an invalid url.")
     
+        '''
+    UserInteraction Tests
+    '''
+    def test_class_methods_in_user_interaction(self):
+        class_methods = dir(self.user_interaction)
+        list_expected_methods = [
+            'ask_user_for_topic',
+            'create_topic_file_name'
+        ]
+        for method in list_expected_methods:
+            self.assertEqual((method in class_methods), True, "Expecting " + method + " to be in class methods.")
+
     '''
     Tear Down at the end of the tests
     '''
