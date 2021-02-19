@@ -59,8 +59,14 @@ class UnitTests(unittest.TestCase):
     def test_class_methods_in_user_interaction(self):
         class_methods = dir(self.user_interaction)
         list_expected_methods = [
+            'ask_user_for_directory',
             'ask_user_for_topic',
-            'create_topic_file_name'
+            'ask_user_for_urls',
+            'create_directory_and_file',
+            'create_topic_file_name',
+            'inform_user_results_location',
+            'start',
+            'visit_urls_save_paragraphs'
         ]
         for method in list_expected_methods:
             self.assertEqual((method in class_methods), True, "Expecting " + method + " to be in class methods.")
